@@ -111,9 +111,8 @@ body::before {
       <script>
         let currentDegree = 165;
         let direction = 1;
-        let animationSpeed = 50; // Starting time interval in milliseconds
+        let animationSpeed = 30; // Starting time interval in milliseconds
         let animationStep = 5; // Amount to increase time interval on each iteration
-        let endDelay = 2000; // Delay at the end of animation, in milliseconds
         let lastFrameTime = performance.now();
       
         function updateBackground() {
@@ -153,15 +152,8 @@ body::before {
             currentDegree += direction;
             if (currentDegree >= 225) {
                 direction = -1;
-                animationSpeed += animationStep;
             } else if (currentDegree <= 125) {
                 direction = 1;
-                animationSpeed += animationStep;
-                if (animationSpeed > endDelay) {
-                animationSpeed = 50;
-                setTimeout(() => requestAnimationFrame(animateGradient), endDelay); // Pause at the end for endDelay milliseconds
-                return;
-                }
             }
             updateBackground();
             lastFrameTime = timestamp;
